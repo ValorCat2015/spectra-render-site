@@ -15,7 +15,7 @@
 @font-face { font-family: "Michroma"; src: url(assets/fonts/michroma.ttf) format("truetype"); font-display: swap; }
 :root {
   --bg: #05060a; --bg2: #0a0c12; --panel: rgba(255,255,255,.035); --line: rgba(255,255,255,.08);
-  --text: #eef1f6; --dim: #9aa4b2; --faint: #5d6675;
+  --text: #eef1f6; --dim: #9aa4b2; --faint: #7f8898;
   --spectrum: linear-gradient(90deg, #6a2cff 0%, #3a4bff 14%, #00a8ff 28%, #00f0d0 40%, #5dff4a 52%, #e8ff2a 62%, #ffb400 72%, #ff5a1a 84%, #d4002a 94%, #6a0010 100%);
   --mono: ui-monospace, "JetBrains Mono", "SF Mono", "Cascadia Code", Menlo, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Nimbus Sans", sans-serif;
@@ -23,12 +23,16 @@
   --max: 1240px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: dark; scrollbar-color: #2a3142 var(--bg); }
+::selection { background: rgba(0,168,255,.38); color: #fff; }
+:focus-visible { outline: 2px solid #6cd0ff; outline-offset: 3px; border-radius: 6px; }
+input, textarea { caret-color: #6cd0ff; }
 body { background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
+.u { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,.3); }
 img, video { display: block; max-width: 100%; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-.mono { font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; font-size: .72rem; color: var(--dim); }
+.mono { font: .78rem var(--mono); color: var(--dim); font-variant-numeric: tabular-nums; }
 .spec-text { background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hairline { height: 1px; background: var(--spectrum); opacity: .7; }
 
@@ -44,14 +48,12 @@ nav ul a:hover { color: var(--text); }
   border: 1px solid var(--line); background: var(--panel); transition: transform .2s, border-color .2s, background .2s; }
 .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.25); }
 .btn.prime { position: relative; background: #fff; color: #05060a; border-color: transparent; }
-.btn.prime::before { content: ""; position: absolute; inset: -2px; border-radius: inherit; background: var(--spectrum); z-index: -1; filter: blur(10px); opacity: .55; }
 nav .btn { padding: 8px 16px; font-size: .85rem; }
 .logo, .btn { white-space: nowrap; }
 
 /* hero */
 .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
-.hero-art { position: absolute; inset: 0; z-index: -3; background: url(assets/gallery/diamondbod.webp) center 35% / cover no-repeat; transform: scale(1.06); animation: drift 24s ease-in-out infinite alternate; }
-@keyframes drift { to { transform: scale(1.12) translate(-1.5%, -1%); } }
+.hero-art { position: absolute; inset: 0; z-index: -3; background: url(assets/gallery/diamondbod.webp) center 35% / cover no-repeat; }
 #waves { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; mix-blend-mode: screen; opacity: .34; filter: blur(3px) saturate(1.4); }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
   background: radial-gradient(120% 80% at 70% 30%, transparent 0%, rgba(5,6,10,.45) 55%, rgba(5,6,10,.92) 100%), linear-gradient(180deg, rgba(5,6,10,.35) 0%, transparent 30%, rgba(5,6,10,.85) 82%, var(--bg) 100%); }
@@ -60,25 +62,19 @@ nav .btn { padding: 8px 16px; font-size: .85rem; }
 .hero h1 em { font-style: normal; }
 .hero p.lede { max-width: 640px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: #cfd5de; }
 .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
-.badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 8px; border-radius: 999px; border: 1px solid var(--line); background: rgba(5,6,10,.5); backdrop-filter: blur(8px); }
+.badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: rgba(5,6,10,.72); color: #cfd5de; font-size: .85rem; }
 .badge i { width: 8px; height: 8px; border-radius: 50%; background: #5dff4a; box-shadow: 0 0 12px #5dff4a; animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .35; } }
-.scrollcue { position: absolute; right: 28px; bottom: 9vh; writing-mode: vertical-rl; }
 
 /* spectrum ruler */
 .ruler { position: relative; padding: 26px 0 10px; }
 .ruler .bar { height: 6px; border-radius: 3px; background: var(--spectrum); box-shadow: 0 0 40px rgba(120,160,255,.25); }
 .ruler .ticks { display: flex; justify-content: space-between; margin-top: 10px; }
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; margin: 36px 0 0; background: var(--panel); }
-.stats div { padding: 26px 24px; border-right: 1px solid var(--line); }
-.stats div:last-child { border-right: 0; }
-.stats b { display: block; font: 1.6rem/1.2 var(--display); margin-bottom: 6px; }
-.stats span { color: var(--dim); font-size: .88rem; }
+.ruler-note { max-width: 62ch; margin-top: 30px; color: var(--dim); font-size: 1.08rem; }
+.ruler-note b { color: var(--text); font-weight: 600; }
 
 /* sections */
 section { padding: 140px 0 0; }
-.kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-.kicker::before { content: ""; width: 34px; height: 1px; background: var(--spectrum); }
 h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025em; max-width: 20ch; }
 .sub { color: var(--dim); max-width: 620px; margin-top: 20px; font-size: 1.08rem; }
 
@@ -87,30 +83,26 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .reel figure { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: #000; }
 .reel figure:first-child { grid-row: span 2; }
 .reel video { width: 100%; height: 100%; object-fit: cover; }
-.reel figcaption { position: absolute; left: 14px; bottom: 14px; display: flex; gap: 8px; align-items: center; padding: 6px 12px; border-radius: 999px; background: rgba(5,6,10,.65); backdrop-filter: blur(8px); }
+.reel figcaption { position: absolute; left: 14px; bottom: 14px; display: flex; gap: 8px; align-items: center; padding: 6px 12px; border-radius: 999px; background: rgba(5,6,10,.78); font-size: .82rem; }
 .rec { width: 7px; height: 7px; border-radius: 50%; background: #ff3b2f; box-shadow: 0 0 10px #ff3b2f; animation: pulse 1.4s infinite; }
 
 /* features */
-.feat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 64px; background: var(--line); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
-.feat article { position: relative; padding: 34px 30px 38px; background: var(--bg); transition: background .3s; }
-.feat article:hover { background: var(--bg2); }
-.feat article::before { content: ""; position: absolute; left: 30px; top: 0; width: 46px; height: 2px; background: var(--c, #fff); box-shadow: 0 0 18px var(--c, #fff); }
-.feat .mono { color: var(--c); }
-.feat h3 { font: 1rem/1.35 var(--display); margin: 14px 0 12px; }
-.feat p { color: var(--dim); font-size: .96rem; }
+.feat { margin-top: 64px; border-top: 1px solid var(--line); }
+.feat article { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+.feat h3 { font: 1.1rem/1.4 var(--display); }
+.feat p { color: var(--dim); max-width: 62ch; }
 
 /* proof */
 .proof { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
 .proof .frame { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); }
 .proof .frame img { width: 100%; }
-.proof .frame .mono { position: absolute; top: 14px; left: 16px; color: #ffd2c8; }
+.proof .frame figcaption { position: absolute; top: 14px; left: 16px; padding: 4px 12px; border-radius: 999px; background: rgba(5,6,10,.78); font-size: .82rem; color: #ffd2c8; }
 .ladder { list-style: none; counter-reset: r; }
 .ladder li { position: relative; padding: 22px 0 22px 64px; border-bottom: 1px solid var(--line); }
 .ladder li::before { counter-increment: r; content: "0" counter(r); position: absolute; left: 0; top: 22px; font: 600 .85rem var(--mono); color: var(--faint); }
 .ladder b { display: block; font-size: 1.12rem; }
 .ladder span { color: var(--dim); font-size: .95rem; }
 .ladder em { font-family: inherit; }
-.ladder li:nth-child(3) b { background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* gallery */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
@@ -124,12 +116,13 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .tile .meta { position: absolute; inset: auto 0 0 0; padding: 40px 18px 16px; background: linear-gradient(transparent, rgba(5,6,10,.9)); opacity: 0; transform: translateY(8px); transition: all .3s; }
 .tile:hover .meta { opacity: 1; transform: none; }
 .tile .meta b { display: block; font-size: 1rem; }
-.tile .play { position: absolute; top: 14px; right: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(5,6,10,.7); }
+.tile .meta span { color: var(--dim); font-size: .82rem; }
+.tile .play { position: absolute; top: 14px; right: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(5,6,10,.78); font-size: .8rem; }
 .tri { display: inline-block; margin-right: 6px; border: 4px solid transparent; border-left: 7px solid currentColor; border-right: 0; vertical-align: 0; }
 .tile.hide { display: none; }
 
 /* lightbox */
-.lb { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: rgba(3,4,7,.94); backdrop-filter: blur(10px); }
+.lb { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: rgba(3,4,7,.95); }
 .lb.open { display: grid; }
 .lb .stage { max-width: 92vw; max-height: 80vh; }
 .lb .stage img, .lb .stage video { max-width: 92vw; max-height: 80vh; border-radius: 10px; }
@@ -141,11 +134,11 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .lb .x { top: 22px; right: 22px; } .lb .prev { left: 22px; top: 50%; } .lb .next { right: 22px; top: 50%; }
 
 /* hardware */
-.hw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
-.hw div { padding: 28px 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
-.hw h4 { font: .98rem var(--display); margin: 14px 0 8px; }
-.hw p { color: var(--dim); font-size: .92rem; }
-.pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font: 600 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.hw { width: 100%; margin-top: 56px; border-collapse: collapse; text-align: left; }
+.hw th { padding: 0 20px 14px 0; color: var(--faint); font-weight: 500; font-size: .85rem; border-bottom: 1px solid var(--line); }
+.hw td { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); color: var(--dim); font-size: .95rem; vertical-align: top; }
+.hw td:first-child { color: var(--text); font: .98rem/1.5 var(--display); white-space: nowrap; }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
 .pill.ok { background: rgba(93,255,74,.12); color: #8dff7f; } .pill.exp { background: rgba(255,180,0,.12); color: #ffc54d; } .pill.new { background: rgba(0,168,255,.14); color: #6cd0ff; }
 .req { display: flex; flex-wrap: wrap; gap: 10px 34px; margin-top: 26px; color: var(--dim); font-size: .92rem; }
 .req b { color: var(--text); font-weight: 600; }
@@ -153,6 +146,7 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 /* what's new */
 .news { margin-top: 56px; border-top: 1px solid var(--line); }
 .news .rel { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+.news .when { color: var(--dim); font-size: .9rem; }
 .news h3 { font: 1.3rem var(--display); margin-top: 6px; }
 .news ul { list-style: none; display: grid; gap: 18px; }
 .news li b { display: block; }
@@ -163,45 +157,38 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .promise div { padding: 26px 22px; border-left: 1px solid var(--line); }
 .promise b { display: block; font-size: 1.08rem; margin-bottom: 6px; }
 .promise span { color: var(--dim); font-size: .93rem; }
-.beta { position: relative; margin: 140px 0 0; padding: 90px 40px; border-radius: 28px; text-align: center; overflow: hidden; border: 1px solid var(--line); isolation: isolate; }
-.beta::before { content: ""; position: absolute; inset: -40%; z-index: -1; background: conic-gradient(from 0deg, #6a2cff, #00a8ff, #00f0d0, #5dff4a, #e8ff2a, #ffb400, #ff5a1a, #d4002a, #6a2cff); filter: blur(90px); opacity: .22; animation: spin 30s linear infinite; }
-@keyframes spin { to { transform: rotate(1turn); } }
+.beta { position: relative; margin: 140px 0 0; padding: 90px 40px; border-radius: 28px; text-align: center; overflow: hidden; border: 1px solid var(--line); background: var(--bg2); }
+.beta::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: var(--spectrum); }
 .beta h2 { margin: 0 auto; max-width: 18ch; }
 .beta .sub { margin: 20px auto 34px; }
 
 footer { margin-top: 120px; padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--faint); font-size: .84rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 
-/* reveal */
-.rv { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-.rv.in { opacity: 1; transform: none; }
-
 @media (max-width: 1080px) {
   nav ul { display: none; }
   nav .btn { margin-left: auto; }
 }
 @media (max-width: 960px) {
-  .stats, .hw, .promise { grid-template-columns: 1fr 1fr; }
-  .stats div:nth-child(2) { border-right: 0; }
-  .stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .feat { grid-template-columns: 1fr 1fr; }
-  .feat article:last-child:nth-child(odd) { grid-column: span 2; }
+  .promise { grid-template-columns: 1fr 1fr; }
+  .feat article { grid-template-columns: 1fr; gap: 10px; }
+  .hw thead { display: none; }
+  .hw tr { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .hw td { padding: 0; border: 0; }
+  .hw td:nth-child(n+3) { grid-column: 1 / -1; }
   .reel { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
   .reel figure:first-child { grid-row: auto; }
   .reel figure { aspect-ratio: 16/11; }
   .proof { grid-template-columns: 1fr; }
   .news .rel { grid-template-columns: 1fr; gap: 18px; }
-  .scrollcue { display: none; }
 }
 @media (max-width: 600px) {
-  .feat, .hw, .promise { grid-template-columns: 1fr; }
-  .feat article:last-child:nth-child(odd) { grid-column: auto; }
+  .promise { grid-template-columns: 1fr; }
   section { padding-top: 100px; }
   .logo { font-size: .8rem; } nav .btn { padding: 7px 12px; font-size: .78rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .rv { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -229,7 +216,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   <div class="hero-art" role="img" aria-label="Crystal figure, soap bubble and cut gem rendered by Spectra"></div>
   <canvas id="waves" aria-hidden="true"></canvas>
   <div class="wrap">
-    <span class="badge mono"><i></i>Beta 1.0.2 · Spectra for Blender</span>
+    <span class="badge"><i></i>Beta 1.0.2 · Spectra for Blender</span>
     <h1>Light, solved<br>as a <em class="spec-text">wave.</em></h1>
     <p class="lede">Spectra Render&trade; is the Reality Engine: the first realtime wave-optics path tracer.
     Spectral, polarized and unbiased by construction, live in Blender's viewport on any ray-tracing GPU.</p>
@@ -238,59 +225,51 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
       <a class="btn" href="#realtime"><svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 10 6 0 12z" fill="currentColor"/></svg> See it live</a>
     </div>
   </div>
-  <span class="scrollcue mono">Scroll · 380–780 nm</span>
 </header>
 
 <div class="wrap">
-  <div class="ruler rv">
+  <div class="ruler">
     <div class="bar"></div>
     <div class="ticks mono"><span>380</span><span>460</span><span>540</span><span>620</span><span>700</span><span>780 nm</span></div>
   </div>
-  <div class="stats rv">
-    <div><b class="spec-text">0</b><span>RGB approximations in the transport</span></div>
-    <div><b>4&times;&lambda;</b><span>hero wavelengths carried per path</span></div>
-    <div><b>IQUV</b><span>full Stokes polarization state</span></div>
-    <div><b>3</b><span>GPU vendors via Vulkan ray tracing</span></div>
-  </div>
+  <p class="ruler-note">Every path carries <b>four hero wavelengths</b> stratified across the visible band, along with its full
+  <b>Stokes polarization</b> state. There are no RGB approximations anywhere in the transport, and it runs on <b>NVIDIA, AMD and Intel</b> ray-tracing GPUs.</p>
 </div>
 
 <section id="realtime">
   <div class="wrap">
-    <div class="kicker mono rv">Realtime IPR</div>
-    <h2 class="rv">This is the viewport.</h2>
-    <p class="sub rv">Every clip here was captured live from Blender's Rendered viewport. Scene state lives on the GPU:
+    <h2>This is the viewport.</h2>
+    <p class="sub">Every clip here was captured live from Blender's Rendered viewport. Scene state lives on the GPU:
     move the camera and it retraces, drag a material slider and one constant updates. Nothing recompiles, nothing re-uploads.</p>
-    <div class="reel rv" id="reel"></div>
+    <div class="reel" id="reel"></div>
   </div>
 </section>
 
 <section id="features">
   <div class="wrap">
-    <div class="kicker mono rv">Features</div>
-    <h2 class="rv">Physics that RGB renderers can only fake.</h2>
-    <div class="feat rv">
-      <article style="--c:#7a5cff"><span class="mono">01 · Substrate</span><h3>Wave optics by construction</h3><p>Maxwell is the substrate, not a post-process. Interference, diffraction and polarization are computed per beam rather than painted on.</p></article>
-      <article style="--c:#2f8bff"><span class="mono">02 · Spectral</span><h3>Spectral, always</h3><p>Hero-wavelength transport across 380–780 nm on every path. There is no spectral mode to switch on, because spectral is the only mode.</p></article>
-      <article style="--c:#00d9ff"><span class="mono">03 · Polarization</span><h3>Stokes &amp; Mueller</h3><p>Light carries its full polarization state. Fresnel reflection polarizes the way real glass and water do.</p></article>
-      <article style="--c:#2dffb0"><span class="mono">04 · Dispersion</span><h3>Fire in every facet</h3><p>Wavelength-dependent index of refraction splits white light into rainbows. Diamonds sparkle because the physics says so.</p></article>
-      <article style="--c:#7dff3a"><span class="mono">05 · Interference</span><h3>Thin film &amp; diffraction</h3><p>Soap bubbles, oil slicks, gratings and edge diffraction come out of the transport as first-class effects, straight from your Principled BSDF.</p></article>
-      <article style="--c:#e8ff2a"><span class="mono">06 · Speed</span><h3>ReSTIR-WO</h3><p>Spatiotemporal resampling built for wave optics drives noise down at interactive rates. The core underneath stays unbiased.</p></article>
-      <article style="--c:#ffb400"><span class="mono">07 · Denoise</span><h3>DLSS Ray Reconstruction</h3><p>On NVIDIA RTX the viewport reconstructs with DLSS-RR. Every other GPU gets Intel Open Image Denoise.</p></article>
-      <article style="--c:#ff6a1a"><span class="mono">08 · Scale</span><h3>Built for vast scenes</h3><p>Instanced geometry shares a single acceleration structure, so a forest costs its geometry memory only once.</p></article>
-      <article style="--c:#ff2a4a"><span class="mono">09 · Workflow</span><h3>An addon, not a fork</h3><p>Install a zip into stock Blender. Spectra uses your Principled materials, lights, cameras and colour management, with nothing to convert.</p></article>
+    <h2>Physics that RGB renderers can only fake.</h2>
+    <div class="feat">
+      <article><h3>Wave optics by construction</h3><p>Maxwell is the substrate, not a post-process. Interference, diffraction and polarization are computed per beam rather than painted on.</p></article>
+      <article><h3>Spectral, always</h3><p>Hero-wavelength transport across 380–780 nm on every path. There is no spectral mode to switch on, because spectral is the only mode.</p></article>
+      <article><h3>Stokes &amp; Mueller</h3><p>Light carries its full polarization state. Fresnel reflection polarizes the way real glass and water do.</p></article>
+      <article><h3>Fire in every facet</h3><p>Wavelength-dependent index of refraction splits white light into rainbows. Diamonds sparkle because the physics says so.</p></article>
+      <article><h3>Thin film &amp; diffraction</h3><p>Soap bubbles, oil slicks, gratings and edge diffraction come out of the transport as first-class effects, straight from your Principled BSDF.</p></article>
+      <article><h3>ReSTIR-WO</h3><p>Spatiotemporal resampling built for wave optics drives noise down at interactive rates. The core underneath stays unbiased.</p></article>
+      <article><h3>DLSS Ray Reconstruction</h3><p>On NVIDIA RTX the viewport reconstructs with DLSS-RR. Every other GPU gets Intel Open Image Denoise.</p></article>
+      <article><h3>Built for vast scenes</h3><p>Instanced geometry shares a single acceleration structure, so a forest costs its geometry memory only once.</p></article>
+      <article><h3>An addon, not a fork</h3><p>Install a zip into stock Blender. Spectra uses your Principled materials, lights, cameras and colour management, with nothing to convert.</p></article>
     </div>
   </div>
 </section>
 
 <section id="physics">
   <div class="wrap">
-    <div class="kicker mono rv">Proof</div>
-    <h2 class="rv">Graded against physics, not taste.</h2>
-    <p class="sub rv">Spectra is checked against a ladder of reference renderers. Any change that touches a BSDF, Fresnel or the wave path
+    <h2>Graded against physics, not taste.</h2>
+    <p class="sub">Spectra is checked against a ladder of reference renderers. Any change that touches a BSDF, Fresnel or the wave path
     has to reproduce double-slit fringe parity before it ships.</p>
     <div class="proof">
-      <div class="frame rv"><span class="mono">Young's double slit · Spectra</span><img id="slit" src="assets/gallery/double-slit.webp" alt="Double-slit interference fringes rendered by Spectra" loading="lazy"></div>
-      <ol class="ladder rv">
+      <figure class="frame"><figcaption>Young's double slit · Spectra</figcaption><img id="slit" src="assets/gallery/double-slit.webp" alt="Double-slit interference fringes rendered by Spectra" loading="lazy"></figure>
+      <ol class="ladder">
         <li><b>Cycles</b><span>Sanity oracle: scenes are matched geometry-for-geometry before any comparison is made.</span></li>
         <li><b>wave_tracer</b><span>Asymptotic Maxwell reference: elliptical-cone beams and near-field diffraction (Steinberg &amp; Pharr, <em>Wave Tracing</em>).</span></li>
         <li><b>BEMsim3D</b><span>Full-wave arbiter: a boundary-element Maxwell solver has the final word.</span></li>
@@ -301,26 +280,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
 
 <section id="gallery">
   <div class="wrap">
-    <div class="kicker mono rv">Gallery</div>
-    <h2 class="rv">Rendered by Spectra.</h2>
-    <p class="sub rv">Stills and live viewport captures. No RGB shortcuts anywhere in the pipeline.</p>
-    <div class="chips rv" id="chips"></div>
+    <h2>Rendered by Spectra.</h2>
+    <p class="sub">Stills and live viewport captures. No RGB shortcuts anywhere in the pipeline.</p>
+    <div class="chips" id="chips"></div>
     <div class="masonry" id="masonry"></div>
   </div>
 </section>
 
 <section id="hardware">
   <div class="wrap">
-    <div class="kicker mono rv">Hardware</div>
-    <h2 class="rv">Every ray-tracing GPU.</h2>
-    <p class="sub rv">Spectra runs on Vulkan KHR ray tracing rather than a single vendor's API. Linux, Windows and Apple Silicon macOS.</p>
-    <div class="hw rv">
-      <div><span class="pill ok">Validated</span><h4>NVIDIA RTX</h4><p>Primary validated hardware, from laptop RTX to dual RTX 5090. DLSS Ray Reconstruction in the viewport.</p></div>
-      <div><span class="pill exp">Experimental</span><h4>AMD Radeon RT</h4><p>Exposes the required Vulkan RT extensions. OIDN denoising.</p></div>
-      <div><span class="pill exp">Experimental</span><h4>Intel Arc</h4><p>Exposes the required Vulkan RT extensions. OIDN denoising.</p></div>
-      <div><span class="pill new">Newest port</span><h4>Apple Silicon</h4><p>M-series Macs through a bundled MoltenVK-based Vulkan layer. Unified memory keeps textures at full resolution.</p></div>
-    </div>
-    <div class="req rv">
+    <h2>Every ray-tracing GPU.</h2>
+    <p class="sub">Spectra runs on Vulkan KHR ray tracing rather than a single vendor's API. Linux, Windows and Apple Silicon macOS.</p>
+    <table class="hw">
+      <thead><tr><th>GPU</th><th>Status</th><th>Viewport denoise</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>NVIDIA RTX</td><td><span class="pill ok">Validated</span></td><td>DLSS Ray Reconstruction</td><td>Primary validated hardware, from laptop RTX to dual RTX 5090.</td></tr>
+        <tr><td>AMD Radeon RT</td><td><span class="pill exp">Experimental</span></td><td>Open Image Denoise</td><td>Exposes the required Vulkan RT extensions.</td></tr>
+        <tr><td>Intel Arc</td><td><span class="pill exp">Experimental</span></td><td>Open Image Denoise</td><td>Exposes the required Vulkan RT extensions.</td></tr>
+        <tr><td>Apple Silicon</td><td><span class="pill new">Newest port</span></td><td>Open Image Denoise</td><td>M-series Macs through a bundled MoltenVK-based Vulkan layer. Unified memory keeps textures at full resolution.</td></tr>
+      </tbody>
+    </table>
+    <div class="req">
       <span><b>Blender</b> 5.1+ (5.2 LTS recommended)</span>
       <span><b>Vulkan</b> 1.3 with <code>VK_KHR_acceleration_structure</code> plus ray-tracing pipeline or ray query</span>
       <span><b>OS</b> Linux · Windows · macOS</span>
@@ -330,11 +310,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
 
 <section id="whats-new">
   <div class="wrap">
-    <div class="kicker mono rv">What's new</div>
-    <h2 class="rv">Shipping, constantly.</h2>
-    <div class="news rv">
+    <h2>Shipping, constantly.</h2>
+    <div class="news">
       <div class="rel">
-        <div><span class="mono">October 2026</span><h3>Beta 1.0.2</h3></div>
+        <div><span class="when">October 2026</span><h3>Beta 1.0.2</h3></div>
         <ul>
           <li><b>DLSS Ray Reconstruction</b><span>The viewport upscale toggle now drives DLSS-RR on RTX GPUs, with opt-in DLSS for F12 stills as well.</span></li>
           <li><b>Polarization from the first bounce</b><span>Camera paths now carry Stokes Q/U from dielectric Fresnel, so reflections polarize physically.</span></li>
@@ -348,9 +327,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
 
 <section id="licensing">
   <div class="wrap">
-    <div class="kicker mono rv">Licensing</div>
-    <h2 class="rv">Built to respect artists.</h2>
-    <div class="promise rv">
+    <h2>Built to respect artists.</h2>
+    <div class="promise">
       <div><b>Perpetual license</b><span>Buy it once and own it, with a year of updates included.</span></div>
       <div><b>Named seats</b><span>Seats belong to people, not machine fingerprints, so a GPU upgrade never costs you a seat.</span></div>
       <div><b>Farms render free</b><span>Headless and render-farm frames are unmetered.</span></div>
@@ -360,9 +338,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
 </section>
 
 <div class="wrap">
-  <div class="beta rv" id="beta">
-    <span class="mono">Spectra Render is in beta</span>
-    <h2 style="margin-top:18px">See light the way it actually is.</h2>
+  <div class="beta" id="beta">
+    <h2>See light the way it actually is.</h2>
     <p class="sub">Beta seats are open to artists and studios. Tell us what you render and which GPU you use.</p>
     <a class="btn prime" href="mailto:ben@valorcatstudios.com?subject=Spectra%20Render%20beta">Request beta access</a>
   </div>
@@ -371,7 +348,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
 <footer>
   <div class="wrap">
     <span>&copy; 2026 Valor Cat Studios. Spectra Render&trade; and the Reality Engine&trade; are trademarks of Valor Cat Studios.</span>
-    <span>Blender addon shell GPL-3.0 · Spectra native core proprietary · Demo scenes from <a href="https://www.blender.org/download/demo-files/" style="text-decoration:underline">Blender demo files</a>, used under their Creative Commons licenses</span>
+    <span>Blender addon shell GPL-3.0 · Spectra native core proprietary · Demo scenes from <a class="u" href="https://www.blender.org/download/demo-files/">Blender demo files</a>, used under their Creative Commons licenses</span>
   </div>
 </footer>
 
@@ -418,7 +395,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   const vids = G.filter(g => g.type === 'video');
   $('#reel').innerHTML = vids.slice(0, 3).map(v =>
     `<figure><video src="${v.src}" poster="${v.thumb}" muted loop playsinline preload="metadata"></video>
-     <figcaption class="mono"><i class="rec"></i>${v.title.replace(/^Live viewport:\s*/, '')} · live viewport</figcaption></figure>`).join('');
+     <figcaption><i class="rec"></i>${v.title.replace(/^Live viewport:\s*/, '')} · live viewport</figcaption></figure>`).join('');
   const vio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .25 });
   document.querySelectorAll('#reel video').forEach(v => vio.observe(v));
 
@@ -426,10 +403,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   const tags = ['All', ...new Set(G.flatMap(g => (g.tag || '').split('·').map(s => s.trim()).filter(Boolean)))];
   $('#chips').innerHTML = tags.map((t, i) => `<button class="chip${i ? '' : ' on'}" data-t="${t}">${t}</button>`).join('');
   $('#masonry').innerHTML = G.map((g, i) =>
-    `<figure class="tile rv" data-i="${i}" data-tags="${g.tag || ''}">
+    `<figure class="tile" data-i="${i}" data-tags="${g.tag || ''}">
        <img src="${g.thumb}" width="${g.w}" height="${g.h}" alt="${g.title}" loading="lazy">
-       ${g.type === 'video' ? '<span class="play mono"><i class="tri"></i>Live</span>' : ''}
-       <figcaption class="meta"><b>${g.title}</b><span class="mono">${g.tag || ''}</span></figcaption></figure>`).join('');
+       ${g.type === 'video' ? '<span class="play"><i class="tri"></i>Live</span>' : ''}
+       <figcaption class="meta"><b>${g.title}</b><span>${g.tag || ''}</span></figcaption></figure>`).join('');
   $('#chips').addEventListener('click', e => {
     const b = e.target.closest('.chip'); if (!b) return;
     document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
@@ -455,9 +432,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
     if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });
   $('#slit').addEventListener('click', () => show(G.findIndex(g => /double/i.test(g.src))));
 
-  // --- reveal on scroll ---
-  const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.rv').forEach(el => rio.observe(el));
 })();
 </script>
 </body>
