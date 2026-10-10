@@ -80,16 +80,6 @@ window.GALLERY = [
   "tag": "Character"
  },
  {
-  "type": "image",
-  "src": "assets/gallery/gauntlet-splash278.webp",
-  "thumb": "assets/gallery/gauntlet-splash278-thumb.webp",
-  "w": 1002,
-  "h": 460,
-  "title": "Blender 2.78 splash",
-  "caption": "Chrome, emissive panels and a reflective visor. Scene: Blender demo files (CC-BY).",
-  "tag": "Blender demos"
- },
- {
   "type": "video",
   "src": "assets/gallery/valorcat-vhs.mp4",
   "thumb": "assets/gallery/valorcat-vhs-poster.webp",

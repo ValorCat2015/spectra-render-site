@@ -9,7 +9,6 @@
     {"src": "ThinFilm_Spheres.png", "title": "Thin-film ladder", "caption": "Four spheres with increasing thin-film thickness. The soap-bubble and oil-slick colours are solved per wavelength.", "tag": "Thin film"},
     {"src": "double-slit.png", "title": "Double slit", "caption": "Young's fringes emerge from the wave substrate itself. This is Spectra's primary physics prism.", "tag": "Wave optics"},
     {"src": "Sprinkles.png", "title": "Sprinkles", "caption": "Character close-up: skin-like scattering and wet specular on a goldfish.", "crop_top": 40, "tag": "Character"},
-    {"src": "Gauntlet_Splash278.png", "title": "Blender 2.78 splash", "caption": "Chrome, emissive panels and a reflective visor. Scene: Blender demo files (CC-BY).", "tag": "Blender demos"},
     {"src": "ValorCat_VHS.mov", "title": "Live viewport: Valor Cat", "caption": "Hero character scrubbed live in the viewport.", "tag": "Realtime"},
     {"src": "INT_Bedroom.png", "title": "Bedroom", "caption": "Valor Cat set interior: practical lights, glossy floors and spectral GI.", "crop_top": 48, "tag": "Interior"},
     {"src": "Creature_Subsurface.png", "title": "Shy creature", "caption": "Soft, translucent skin from light scattering beneath the surface.", "tag": "Creature"},
