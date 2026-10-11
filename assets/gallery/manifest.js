@@ -70,6 +70,16 @@ window.GALLERY = [
   "tag": "Wave optics"
  },
  {
+  "type": "video",
+  "src": "assets/gallery/diffraction-grating.mp4",
+  "thumb": "assets/gallery/diffraction-grating-poster.webp",
+  "w": 1086,
+  "h": 1228,
+  "title": "Diffraction grating",
+  "caption": "A grating splits light into its spectrum, sweeping across the armour as the camera moves. Live in Spectra's viewport.",
+  "tag": "Wave optics"
+ },
+ {
   "type": "image",
   "src": "assets/gallery/sprinkles.webp",
   "thumb": "assets/gallery/sprinkles-thumb.webp",
