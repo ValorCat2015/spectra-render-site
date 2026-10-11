@@ -105,7 +105,7 @@ window.GALLERY = [
   "thumb": "assets/gallery/creature-subsurface-thumb.webp",
   "w": 1024,
   "h": 1024,
-  "title": "Shy creature",
+  "title": "Plyp Dancing",
   "caption": "Soft, translucent skin from light scattering beneath the surface.",
   "tag": "Creature"
  },
