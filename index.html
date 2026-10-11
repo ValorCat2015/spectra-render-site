@@ -395,7 +395,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   (function loop() { if (heroOn) { t += .06; frame(); } if (!reduce) requestAnimationFrame(loop); })();
 
   // --- realtime reel ---
-  const vids = G.filter(g => g.type === 'video');
+  const vids = G.filter(g => g.type === 'video' && g.tag === 'Realtime');
   $('#reel').innerHTML = vids.slice(0, 3).map(v =>
     `<figure><video src="${v.src}" poster="${v.thumb}" muted loop playsinline preload="metadata"></video>
      <figcaption><i class="rec"></i>${v.title.replace(/^Live viewport:\s*/, '')} · live viewport</figcaption></figure>`).join('');
@@ -408,7 +408,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   $('#masonry').innerHTML = G.map((g, i) =>
     `<figure class="tile" data-i="${i}" data-tags="${g.tag || ''}">
        <img src="${g.thumb}" width="${g.w}" height="${g.h}" alt="${g.title}" loading="lazy">
-       ${g.type === 'video' ? '<span class="play"><i class="tri"></i>Live</span>' : ''}
+       ${g.type === 'video' ? `<span class="play"><i class="tri"></i>${g.tag === 'Realtime' ? 'Live' : 'Video'}</span>` : ''}
        <figcaption class="meta"><b>${g.title}</b><span>${g.tag || ''}</span></figcaption></figure>`).join('');
   $('#chips').addEventListener('click', e => {
     const b = e.target.closest('.chip'); if (!b) return;

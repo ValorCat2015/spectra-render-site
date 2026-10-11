@@ -11,7 +11,7 @@
     {"src": "Sprinkles.png", "title": "Sprinkles", "caption": "Character close-up: skin-like scattering and wet specular on a goldfish.", "crop_top": 40, "tag": "Character"},
     {"src": "ValorCat_VHS.mov", "title": "Live viewport: Valor Cat", "caption": "Hero character scrubbed live in the viewport.", "tag": "Realtime"},
     {"src": "INT_Bedroom.png", "title": "Bedroom", "caption": "Valor Cat set interior: practical lights, glossy floors and spectral GI.", "crop_top": 48, "tag": "Interior"},
-    {"src": "Plyp_Dancing.jpg", "title": "Plyp Dancing", "caption": "Soft, translucent skin from light scattering beneath the surface.", "tag": "Creature"},
+    {"src": "Plyp_Dancing.mp4", "title": "Plyp Dancing", "caption": "Soft, translucent skin from light scattering beneath the surface.", "tag": "Creature"},
     {"src": "INT_Hallway.png", "title": "Hallway", "caption": "Valor Cat set interior: coves, sconces and polished metal.", "tag": "Interior"},
     {"src": "Grasshopper.mov", "title": "Live viewport: Grasshopper", "caption": "Outdoor creature shot, interactive in the viewport.", "tag": "Realtime"}
   ]

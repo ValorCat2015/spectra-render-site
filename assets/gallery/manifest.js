@@ -100,11 +100,11 @@ window.GALLERY = [
   "tag": "Interior"
  },
  {
-  "type": "image",
-  "src": "assets/gallery/plyp-dancing.webp",
-  "thumb": "assets/gallery/plyp-dancing-thumb.webp",
-  "w": 1320,
-  "h": 1308,
+  "type": "video",
+  "src": "assets/gallery/plyp-dancing.mp4",
+  "thumb": "assets/gallery/plyp-dancing-poster.webp",
+  "w": 1080,
+  "h": 1080,
   "title": "Plyp Dancing",
   "caption": "Soft, translucent skin from light scattering beneath the surface.",
   "tag": "Creature"
