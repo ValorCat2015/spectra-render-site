@@ -164,6 +164,12 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .beta::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: var(--spectrum); }
 .beta h2 { margin: 0 auto; max-width: 18ch; }
 .beta .sub { margin: 20px auto 34px; }
+.signup { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+.signup input { flex: 1 1 180px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--text); font: .92rem var(--sans); }
+.signup input::placeholder { color: var(--faint); }
+.signup .hp { display: none; }
+.beta .thanks { display: none; margin-bottom: 0; }
+.beta.done .signup { display: none; } .beta.done .thanks { display: block; }
 
 footer { margin-top: 120px; padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--faint); font-size: .84rem; }
 footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -344,7 +350,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   <div class="beta" id="beta">
     <h2>Render light the way physics does.</h2>
     <p class="sub">Beta seats are open to artists and studios. Tell us what you render and which GPU you use.</p>
-    <a class="btn prime" href="mailto:ben@valorcatstudios.com?subject=Spectra%20Render%20beta">Request beta access</a>
+    <form class="signup" action="https://formsubmit.co/ben@valorcatstudios.com" method="POST">
+      <input type="email" name="email" placeholder="Email" required aria-label="Email">
+      <input type="text" name="renders" placeholder="What you render" aria-label="What you render">
+      <input type="text" name="gpu" placeholder="GPU" aria-label="GPU">
+      <input type="hidden" name="_subject" value="Spectra Render beta signup">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://spectra-render.com/?beta=thanks#beta">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn prime" type="submit">Request beta access</button>
+    </form>
+    <p class="sub thanks">You're on the list. We'll be in touch.</p>
   </div>
 </div>
 
@@ -363,6 +379,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   <button class="next" aria-label="Next">&#8250;</button>
 </div>
 
+<script>if (new URLSearchParams(location.search).get("beta") === "thanks") { document.getElementById("beta").classList.add("done"); history.replaceState(null, "", location.pathname + location.hash); }</script>
 <script src="assets/gallery/manifest.js"></script>
 <script>
 (() => {
