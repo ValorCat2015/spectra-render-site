@@ -2,6 +2,7 @@
   "_doc": "Gallery order + captions. Source media lives in ~/Valor Cat - Series/www/spectra-render/Gallery; run tools/build_gallery.py. crop_top strips a Blender viewport header (px). Files not listed here are appended with a title derived from the filename.",
   "items": [
     {"src": "DiamondBod.png", "title": "Diamond Body", "caption": "Dispersion fire through cut crystal and thin-film colour on a soap bubble, traced wavelength by wavelength.", "crop_top": 16, "tag": "Dispersion · Thin film"},
+    {"src": "INT_SciLab.mp4", "title": "Live viewport: Science Lab", "caption": "Flying through the new lab set, captured straight from Blender's Rendered viewport on a laptop. No offline render.", "tag": "Realtime"},
     {"src": "Gauntlet_JunkShop.png", "title": "Junk Shop", "caption": "Blender's Junk Shop demo, path traced live in Spectra's viewport. Scene: Blender demo files (CC-BY).", "tag": "Blender demos"},
     {"src": "Mantis.png", "title": "Mantis", "caption": "Macro creature study under spectral global illumination.", "tag": "Creature"},
     {"src": "Mark.mov", "title": "Live viewport: Mark", "caption": "Captured straight from Blender's Rendered viewport. No offline render.", "tag": "Realtime"},

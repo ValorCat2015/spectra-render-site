@@ -10,6 +10,16 @@ window.GALLERY = [
   "tag": "Dispersion \u00b7 Thin film"
  },
  {
+  "type": "video",
+  "src": "assets/gallery/int-scilab.mp4",
+  "thumb": "assets/gallery/int-scilab-poster.webp",
+  "w": 1280,
+  "h": 1140,
+  "title": "Live viewport: Science Lab",
+  "caption": "Flying through the new lab set, captured straight from Blender's Rendered viewport on a laptop. No offline render.",
+  "tag": "Realtime"
+ },
+ {
   "type": "image",
   "src": "assets/gallery/gauntlet-junkshop.webp",
   "thumb": "assets/gallery/gauntlet-junkshop-thumb.webp",
