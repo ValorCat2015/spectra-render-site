@@ -94,6 +94,7 @@ h2 { font: clamp(1.7rem, 3.6vw, 3rem)/1.12 var(--display); letter-spacing: -.025
 .feat h3 { transition: color .25s; }
 .feat h3 { font: 1.1rem/1.4 var(--display); }
 .feat p { color: var(--dim); max-width: 62ch; }
+.feat .pp { display: inline-block; margin-left: 10px; padding: 2px 8px; border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 999px; color: var(--c); font: 500 .68rem/1.5 var(--sans); letter-spacing: .06em; text-transform: uppercase; vertical-align: 2px; }
 
 /* proof */
 .proof { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
@@ -280,7 +281,7 @@ src="https://www.facebook.com/tr?id=4903710306530758&ev=PageView&noscript=1"
       <article style="--c:#00d9ff"><h3>Stokes &amp; Mueller</h3><p>Light carries its full polarization state. Fresnel reflection polarizes the way real glass and water do.</p></article>
       <article style="--c:#2dffb0"><h3>Fire in every facet</h3><p>Wavelength-dependent index of refraction splits white light into rainbows. Diamonds sparkle because the physics says so.</p></article>
       <article style="--c:#7dff3a"><h3>Thin film &amp; diffraction</h3><p>Soap bubbles, oil slicks, gratings and edge diffraction come out of the transport as first-class effects, straight from your Principled BSDF.</p></article>
-      <article style="--c:#e8ff2a"><h3>ReSTIR-WO</h3><p>Spatiotemporal resampling built for wave optics drives noise down at interactive rates. The core underneath stays unbiased.</p></article>
+      <article style="--c:#e8ff2a"><h3>ReSTIR-WO<span class="pp">patent pending</span></h3><p>Spatiotemporal resampling built for wave optics drives noise down at interactive rates. The core underneath stays unbiased.</p></article>
       <article style="--c:#ffb400"><h3>DLSS Ray Reconstruction</h3><p>On NVIDIA RTX the viewport reconstructs with DLSS-RR. Every other GPU gets Intel Open Image Denoise.</p></article>
       <article style="--c:#ff6a1a"><h3>Built for vast scenes</h3><p>Instanced geometry shares a single acceleration structure, so a forest costs its geometry memory only once.</p></article>
       <article style="--c:#ff2a4a"><h3>An addon, not a fork</h3><p>Install a zip into stock Blender. Spectra uses your Principled materials, lights, cameras and colour management, with nothing to convert.</p></article>
