@@ -200,6 +200,23 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4903710306530758');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4903710306530758&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -356,6 +373,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
       <input type="text" name="gpu" placeholder="GPU" aria-label="GPU">
       <input type="hidden" name="_subject" value="Spectra Render beta signup">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="source" id="src">
       <input type="hidden" name="_next" value="https://spectra-render.com/?beta=thanks#beta">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn prime" type="submit">Request beta access</button>
@@ -379,7 +397,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wr
   <button class="next" aria-label="Next">&#8250;</button>
 </div>
 
-<script>if (new URLSearchParams(location.search).get("beta") === "thanks") { document.getElementById("beta").classList.add("done"); history.replaceState(null, "", location.pathname + location.hash); }</script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var utm = ["utm_source", "utm_medium", "utm_campaign"].map(function (k) { return q.get(k); }).filter(Boolean).join(" / ");
+  try { if (utm) localStorage.setItem("spectraSrc", utm); utm = localStorage.getItem("spectraSrc") || utm; } catch (e) {}
+  document.getElementById("src").value = utm || document.referrer || "direct";
+})();
+</script>
+<script>if (new URLSearchParams(location.search).get("beta") === "thanks") { fbq("track", "Lead"); document.getElementById("beta").classList.add("done"); history.replaceState(null, "", location.pathname + location.hash); }</script>
 <script src="assets/gallery/manifest.js"></script>
 <script>
 (() => {
