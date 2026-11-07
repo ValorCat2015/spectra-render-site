@@ -10,6 +10,26 @@ window.GALLERY = [
   "tag": "Dispersion \u00b7 Thin film"
  },
  {
+  "type": "image",
+  "src": "assets/gallery/hair-groom.webp",
+  "thumb": "assets/gallery/hair-groom-thumb.webp",
+  "w": 908,
+  "h": 1112,
+  "title": "Hair",
+  "caption": "Every strand a real curve, down to the flyaways at the hairline.",
+  "tag": "Hair"
+ },
+ {
+  "type": "image",
+  "src": "assets/gallery/mosquito.webp",
+  "thumb": "assets/gallery/mosquito-thumb.webp",
+  "w": 1339,
+  "h": 1138,
+  "title": "Mosquito",
+  "caption": "Macro study: pale scales, fine bristles and a shallow depth of field.",
+  "tag": "Creature"
+ },
+ {
   "type": "video",
   "src": "assets/gallery/int-scilab.mp4",
   "thumb": "assets/gallery/int-scilab-poster.webp",
@@ -51,16 +71,6 @@ window.GALLERY = [
  },
  {
   "type": "image",
-  "src": "assets/gallery/hair-groom.webp",
-  "thumb": "assets/gallery/hair-groom-thumb.webp",
-  "w": 908,
-  "h": 1112,
-  "title": "Hair",
-  "caption": "Every strand a real curve, down to the flyaways at the hairline.",
-  "tag": "Hair"
- },
- {
-  "type": "image",
   "src": "assets/gallery/gauntlet-classroom.webp",
   "thumb": "assets/gallery/gauntlet-classroom-thumb.webp",
   "w": 1920,
@@ -78,16 +88,6 @@ window.GALLERY = [
   "title": "Thin-film ladder",
   "caption": "Four spheres with increasing thin-film thickness. The soap-bubble and oil-slick colours are solved per wavelength.",
   "tag": "Thin film"
- },
- {
-  "type": "image",
-  "src": "assets/gallery/mosquito.webp",
-  "thumb": "assets/gallery/mosquito-thumb.webp",
-  "w": 1339,
-  "h": 1138,
-  "title": "Mosquito",
-  "caption": "Macro study: pale scales, fine bristles and a shallow depth of field.",
-  "tag": "Creature"
  },
  {
   "type": "image",
