@@ -51,12 +51,12 @@ window.GALLERY = [
  },
  {
   "type": "image",
-  "src": "assets/gallery/mantis.webp",
-  "thumb": "assets/gallery/mantis-thumb.webp",
-  "w": 1555,
-  "h": 1437,
-  "title": "Mantis",
-  "caption": "Macro creature study under spectral global illumination.",
+  "src": "assets/gallery/ant.webp",
+  "thumb": "assets/gallery/ant-thumb.webp",
+  "w": 1042,
+  "h": 1173,
+  "title": "Ant",
+  "caption": "Glinting head plates and serrated mandibles, up close with a shallow depth of field.",
   "tag": "Creature"
  },
  {
