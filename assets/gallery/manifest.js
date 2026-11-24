@@ -36,7 +36,7 @@ window.GALLERY = [
   "w": 706,
   "h": 816,
   "title": "Mantis",
-  "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live in Spectra's viewport.",
+  "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live viewport render on a laptop, with real-time wave-optics lens simulation.",
   "tag": "Creature"
  },
  {
