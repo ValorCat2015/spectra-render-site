@@ -5,6 +5,7 @@ Usage: tools/build_gallery.py [SRC_DIR]   (needs magick + ffmpeg on PATH)
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -75,7 +76,15 @@ def main() -> None:
         manifest.append(built | {"title": item.get("title") or title_of(src.stem),
                                  "caption": item.get("caption", ""), "tag": item.get("tag", "")})
         print(f"ok  {src.name} -> {built['src']}")
-    (OUT / "manifest.js").write_text("window.GALLERY = " + json.dumps(manifest, indent=1) + ";\n")
+    js = "window.GALLERY = " + json.dumps(manifest, indent=1) + ";\n"
+    (OUT / "manifest.js").write_text(js)
+    # Pages serves max-age=600; without the hash a reload keeps the old manifest for 10 minutes.
+    page = SITE / "index.html"
+    tag = f'assets/gallery/manifest.js?v={hashlib.sha256(js.encode()).hexdigest()[:8]}"'
+    html, n = re.subn(r'assets/gallery/manifest\.js(\?v=\w+)?"', tag, page.read_text())
+    if n != 1:
+        sys.exit(f"index.html: expected 1 manifest.js link, found {n}")
+    page.write_text(html)
 
 
 if __name__ == "__main__":
