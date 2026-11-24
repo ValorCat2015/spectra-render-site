@@ -31,6 +31,16 @@ window.GALLERY = [
  },
  {
   "type": "video",
+  "src": "assets/gallery/mantis.mp4",
+  "thumb": "assets/gallery/mantis-poster.webp",
+  "w": 706,
+  "h": 816,
+  "title": "Mantis",
+  "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live in Spectra's viewport.",
+  "tag": "Creature"
+ },
+ {
+  "type": "video",
   "src": "assets/gallery/int-scilab.mp4",
   "thumb": "assets/gallery/int-scilab-poster.webp",
   "w": 1280,
