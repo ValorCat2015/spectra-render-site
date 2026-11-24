@@ -4,7 +4,7 @@
     {"src": "DiamondBod.png", "title": "Diamond Body", "caption": "Dispersion fire through cut crystal and thin-film colour on a soap bubble, traced wavelength by wavelength.", "crop_top": 16, "tag": "Dispersion · Thin film"},
     {"src": "Hair_Groom.png", "title": "Hair", "caption": "Every strand a real curve, down to the flyaways at the hairline.", "tag": "Hair"},
     {"src": "Mosquito.png", "title": "Mosquito", "caption": "Macro study: pale scales, fine bristles and a shallow depth of field.", "tag": "Creature"},
-    {"src": "Mantis.mp4", "title": "Mantis", "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live viewport render on a laptop, with real-time wave-optics lens simulation.", "tag": "Creature"},
+    {"src": "Mantis.mp4", "title": "Live viewport: Mantis", "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live viewport render on a laptop, with real-time wave-optics lens simulation.", "tag": "Realtime"},
     {"src": "INT_SciLab.mp4", "title": "Live viewport: Science Lab", "caption": "Flying through the new lab set, captured straight from Blender's Rendered viewport on a laptop. No offline render.", "tag": "Realtime"},
     {"src": "Gauntlet_JunkShop.png", "title": "Junk Shop", "caption": "Blender's Junk Shop demo, path traced live in Spectra's viewport. Scene: Blender demo files (CC-BY).", "tag": "Blender demos"},
     {"src": "Ant.png", "title": "Ant", "caption": "Glinting head plates and serrated mandibles, up close with a shallow depth of field.", "tag": "Creature"},

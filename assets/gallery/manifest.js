@@ -35,9 +35,9 @@ window.GALLERY = [
   "thumb": "assets/gallery/mantis-poster.webp",
   "w": 706,
   "h": 816,
-  "title": "Mantis",
+  "title": "Live viewport: Mantis",
   "caption": "From the whole animal down to the facets of its eye and the hairs on its legs. Live viewport render on a laptop, with real-time wave-optics lens simulation.",
-  "tag": "Creature"
+  "tag": "Realtime"
  },
  {
   "type": "video",
