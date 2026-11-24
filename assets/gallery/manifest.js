@@ -178,15 +178,5 @@ window.GALLERY = [
   "title": "Hallway",
   "caption": "Valor Cat set interior: coves, sconces and polished metal.",
   "tag": "Interior"
- },
- {
-  "type": "video",
-  "src": "assets/gallery/grasshopper.mp4",
-  "thumb": "assets/gallery/grasshopper-poster.webp",
-  "w": 1012,
-  "h": 720,
-  "title": "Live viewport: Grasshopper",
-  "caption": "Outdoor creature shot, interactive in the viewport.",
-  "tag": "Realtime"
  }
 ];
